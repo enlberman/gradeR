@@ -117,8 +117,9 @@ calcGrades <- function(submission_dir, your_test_file, suppress_warnings = TRUE,
     # run student's submission in a separate process
     # https://stackoverflow.com/a/63746414/1267833
     rogueScript <- function(source_file_path){
-      rogueEnv <- new.env()  
-      source(source_file_path, rogueEnv)
+      rogueEnv <- new.env()
+      source(knitr::purl(source_file_path, quiet=TRUE, envir = rogueEnv))
+      #source(source_file_path, rogueEnv)
       rogueEnv
     }
     # remove previous scriptResults in case an error is triggered and it's never re-created
@@ -225,7 +226,8 @@ calcGradesForGradescope <- function(submission_file,
   # https://stackoverflow.com/a/63746414/1267833
   rogueScript <- function(source_file_path){
     rogueEnv <- new.env()  
-    source(source_file_path, rogueEnv)
+    source(knitr::purl(source_file_path, quiet=TRUE, envir = rogueEnv))
+    #source(source_file_path, rogueEnv)
     rogueEnv
   }
   if( suppress_warnings ){

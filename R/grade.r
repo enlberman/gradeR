@@ -13,7 +13,7 @@
 findBadEncodingFiles <- function(submission_dir){
   scripts_to_grade <- list.files(path = submission_dir, 
                                  recursive = T, 
-                                 pattern = "\\.r$", 
+                                 pattern = "\\.RMD$", 
                                  ignore.case = T)  
   atLeastOneBadFile <- FALSE
   for(script in scripts_to_grade) {
@@ -48,7 +48,7 @@ findBadEncodingFiles <- function(submission_dir){
 findGlobalPaths <- function(submission_dir) {
   scripts_to_grade <- list.files(path = submission_dir, 
                                  recursive = T, 
-                                 pattern = "\\.r$", 
+                                 pattern = "\\.RMD$", 
                                  ignore.case = T)
   
   atLeastOneBadFile <- FALSE
@@ -92,7 +92,7 @@ calcGrades <- function(submission_dir, your_test_file, suppress_warnings = TRUE,
   
   paths <- list.files(path = submission_dir, 
                       recursive = T, 
-                      pattern = "\\.r$", 
+                      pattern = "\\.RMD$", 
                       ignore.case = T)
   
   trial_test <- testthat::test_file(your_test_file, reporter = "minimal")

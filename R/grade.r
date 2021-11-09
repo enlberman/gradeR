@@ -119,7 +119,7 @@ calcGrades <- function(submission_dir, your_test_file, suppress_warnings = TRUE,
     rogueScript <- function(source_file_path){
       rogueEnv <- new.env()
       source(knitr::purl(source_file_path, quiet=TRUE, envir = rogueEnv))
-      #source(source_file_path, rogueEnv)
+      # source(source_file_path, rogueEnv)
       rogueEnv
     }
     # remove previous scriptResults in case an error is triggered and it's never re-created
@@ -227,7 +227,7 @@ calcGradesForGradescope <- function(submission_file,
   rogueScript <- function(source_file_path){
     rogueEnv <- new.env()  
     source(knitr::purl(source_file_path, quiet=TRUE, envir = rogueEnv))
-    #source(source_file_path, rogueEnv)
+    # source(source_file_path, rogueEnv)
     rogueEnv
   }
   if( suppress_warnings ){
